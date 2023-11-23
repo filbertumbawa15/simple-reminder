@@ -16,11 +16,10 @@ Future singleNotification(
     DateTime scheduledDate, String title, String body, int hashCode,
     {String? sound}) async {
   var androidChannel = const AndroidNotificationDetails(
-    'channel-id',
-    'channel-name',
-    channelDescription: 'channel-description',
-    importance: Importance.max,
-    priority: Priority.max,
+      'your_channel_id',
+      'your_channel_name',
+      importance: Importance.max,
+      priority: Priority.high,
   );
 
   var iosChannel = IOSNotificationDetails();
