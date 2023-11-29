@@ -13,12 +13,11 @@ final ReceivePort port = ReceivePort();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await notify.initNotifications();
   IsolateNameServer.registerPortWithName(
     port.sendPort,
     isolateName,
   );
-
-  notify.initNotifications();
   await AndroidAlarmManager.initialize();
   await Permission.notification.isDenied.then((value) {
     if (value) {
@@ -69,10 +68,8 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
     print("baca Alarm");
     var rand = Random();
     var hash = rand.nextInt(100);
-    DateTime now = DateTime.now().toUtc().add(const Duration(seconds: 1));
 
     await notify.singleNotification(
-      now,
       "Hallo Dari Program",
       "Pesan ini dikirim pada Jam 8 Pagi, mohon mendapatkan pesan, jika tidak, langsung hubungi pihak IT yang bersangkutan",
       hash,
@@ -87,7 +84,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
     DateTime now = DateTime.now().toUtc().add(const Duration(seconds: 1));
 
     await notify.singleNotification(
-      now,
       "Hallo Dari Program",
       "Pesan ini dikirim pada Jam Setengah 9 Pagi, mohon mendapatkan pesan, jika tidak, langsung hubungi pihak IT yang bersangkutan",
       hash,
@@ -102,7 +98,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
     DateTime now = DateTime.now().toUtc().add(const Duration(seconds: 1));
 
     await notify.singleNotification(
-      now,
       "Hallo Dari Program",
       "Pesan ini dikirim pada Jam 9 Pagi, mohon mendapatkan pesan, jika tidak, langsung hubungi pihak IT yang bersangkutan",
       hash,
@@ -117,7 +112,6 @@ class _SetAlarmPageState extends State<SetAlarmPage> {
     DateTime now = DateTime.now().toUtc().add(const Duration(seconds: 1));
 
     await notify.singleNotification(
-      now,
       "Hallo Dari Program",
       "Pesan ini dikirim pada Jam 3 Sore, mohon mendapatkan pesan, jika tidak, langsung hubungi pihak IT yang bersangkutan",
       hash,
